@@ -21,7 +21,7 @@ public static WebDriver driver;
 	public Base() {
 		try {
 			
-		FileInputStream file = new FileInputStream("C:\\Users\\vikra\\OneDrive\\Desktop\\Tania\\Java workspace\\AmazonFinalProject\\src\\test\\java\\environmentvariables\\config.properties");
+		FileInputStream file = new FileInputStream("E:\\Amazon_Test\\src\\test\\java\\environmentvariables\\config.properties");
 		prop.load(file);
 	
 	}
@@ -51,6 +51,10 @@ public static WebDriver driver;
 			driver.manage().timeouts().pageLoadTimeout(TimeUtils.timewait, TimeUnit.SECONDS);
 			driver.get(prop.getProperty("URL"));
 			
+		}
+
+		public static void closeBrower(){
+		driver.close();
 		}
 	
 

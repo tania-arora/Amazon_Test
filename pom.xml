@@ -3,7 +3,11 @@
   <groupId>Amazon_BDD_TDD</groupId>
   <artifactId>AmazonFinalProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Amazon Project</name>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <name>Amazon Project</name>
   
   
   
