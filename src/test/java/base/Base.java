@@ -34,7 +34,7 @@ public static WebDriver driver;
 	}
 
 	}
-	public static void initiation() {
+	public static void initiation(String url) {
 		String browsername=   prop.getProperty("browser");
 		
 		if(browsername.equals("Firefox")) {
@@ -47,9 +47,10 @@ public static WebDriver driver;
 			}
 			
 			driver.manage().window().maximize();
-		System.out.println(prop.getProperty("URL"));
 			driver.manage().timeouts().pageLoadTimeout(TimeUtils.timewait, TimeUnit.SECONDS);
-			driver.get(prop.getProperty("URL"));
+			//driver.get(prop.getProperty("URL"));
+			driver.get(url);
+
 			
 		}
 	

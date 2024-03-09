@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-07T23:54:58 EST" name="Default suite" finished-at="2024-03-07T23:55:01 EST" duration-ms="3528">
+  <suite started-at="2024-03-09T14:13:34 EST" name="Default suite" finished-at="2024-03-09T14:13:39 EST" duration-ms="5326">
     <groups>
     </groups>
-    <test started-at="2024-03-07T23:54:58 EST" name="Default test" finished-at="2024-03-07T23:55:01 EST" duration-ms="3528">
-      <class name="testPackage.Signup_test">
-        <test-method is-config="true" signature="initsetup()[pri:0, instance:testPackage.Signup_test@36902638]" started-at="2024-03-07T23:54:58 EST" name="initsetup" finished-at="2024-03-07T23:55:01 EST" duration-ms="3392" status="PASS">
+    <test started-at="2024-03-09T14:13:34 EST" name="Default test" finished-at="2024-03-09T14:13:39 EST" duration-ms="5326">
+      <class name="testPackage.Signin_test">
+        <test-method is-config="true" signature="initsetup_signin()[pri:0, instance:testPackage.Signin_test@223d2c72]" started-at="2024-03-09T14:13:34 EST" name="initsetup_signin" finished-at="2024-03-09T14:13:38 EST" duration-ms="3659" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initsetup -->
-        <test-method signature="typeYname()[pri:0, instance:testPackage.Signup_test@36902638]" started-at="2024-03-07T23:55:01 EST" name="typeYname" finished-at="2024-03-07T23:55:01 EST" duration-ms="93" status="PASS">
+        </test-method> <!-- initsetup_signin -->
+        <test-method signature="testSigninInvalidCredentials()[pri:0, instance:testPackage.Signin_test@223d2c72]" started-at="2024-03-09T14:13:38 EST" name="testSigninInvalidCredentials" finished-at="2024-03-09T14:13:39 EST" duration-ms="1626" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- typeYname -->
-      </class> <!-- testPackage.Signup_test -->
+        </test-method> <!-- testSigninInvalidCredentials -->
+      </class> <!-- testPackage.Signin_test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
