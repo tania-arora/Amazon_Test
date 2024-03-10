@@ -5,8 +5,9 @@
     <classes>
       <class name="testPackage.Signin_test">
         <methods>
+          <include name="testSigninInvalidCredentials"/>
           <include name="initsetup_signin"/>
-          <include name="testSignIninvalidCredentials"/>
+          <include name="testSignInValidCredentials"/>
         </methods>
       </class> <!-- testPackage.Signin_test -->
     </classes>

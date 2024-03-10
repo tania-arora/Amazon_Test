@@ -1,6 +1,7 @@
 package testPackage;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -37,6 +38,12 @@ public class Signin_test extends Base {
 		Assert.assertTrue(sign_in.isInvalidPasswordErrorMessageDisplayed());
 		Assert.assertFalse(sign_in.isNavigated());
 	
+	}
+	
+
+	@AfterMethod
+	public void closeBrowser(){
+		closeBrower();
 	}
 
 }

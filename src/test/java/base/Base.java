@@ -53,6 +53,10 @@ public static WebDriver driver;
 
 			
 		}
+
+		public static void closeBrower(){
+		driver.close();
+		}
 	
 
 }
