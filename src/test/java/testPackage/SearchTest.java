@@ -42,6 +42,7 @@ public class SearchTest extends Base {
 		Assert.assertFalse(home.isRatingFilterApplied());
 		home.applyRatingFilter();
 		Assert.assertTrue(home.isRatingFilterApplied());
+		Assert.assertTrue(home.IsResultSortedLowToHighPriceCheckByURL());
 	}
 
 	@Test
@@ -49,12 +50,29 @@ public class SearchTest extends Base {
 		String searchKeyWord = "laptop";
 		home.search(searchKeyWord);
 		home.performSearch();
-//		home.selectLowToHighPriceSort();
+		home.selectLowToHighPriceSort();
 	}
 
-	@AfterMethod
-	public void closeBrowser(){
-		closeBrower();
+	/*
+	This test included:
+	searching for keyword "laptop"
+	filtering by customer review of 4 or more
+	and sorting by price low to high
+	 */
+	@Test
+	public void searchFilterSortTest(){
+		String searchKeyWord = "laptop";
+		home.search(searchKeyWord);
+		home.performSearch();
+		Assert.assertFalse(home.isRatingFilterApplied());
+		home.applyRatingFilter();
+		Assert.assertTrue(home.isRatingFilterApplied());
+		home.selectLowToHighPriceSort();
 	}
+
+//	@AfterMethod
+//	public void closeBrowser(){
+//		closeBrower();
+//	}
 
 }

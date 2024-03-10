@@ -1,4 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: testPackage.SearchTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 31.90 s -- in testPackage.SearchTest
+Tests run: 9, Failures: 1, Errors: 0, Skipped: 8, Time elapsed: 1.354 sec <<< FAILURE!
+initsetup(testPackage.SearchTest)  Time elapsed: 0.969 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because "browsername" is null
+	at base.Base.initiation(Base.java:40)
+	at testPackage.SearchTest.initsetup(SearchTest.java:21)
+

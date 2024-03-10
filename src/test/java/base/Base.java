@@ -3,11 +3,13 @@ package base;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import utility.TimeUtils;
@@ -21,7 +23,7 @@ public static WebDriver driver;
 	public Base() {
 		try {
 			
-		FileInputStream file = new FileInputStream("C:\\Users\\vikra\\OneDrive\\Desktop\\Tania\\Java workspace\\AmazonFinalProject\\src\\test\\java\\environmentvariables\\config.properties");
+		FileInputStream file = new FileInputStream("E:\\Amazon_Test\\src\\test\\java\\environmentvariables\\config.properties");
 		prop.load(file);
 	
 	}
@@ -43,11 +45,15 @@ public static WebDriver driver;
 		}
 			else if (browsername.equals("Chrome")) {
 		//		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-				driver= new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			//options.addArguments("--headless=new");
+				driver= new ChromeDriver(options);
+
 			}
 			
 			driver.manage().window().maximize();
 			driver.manage().timeouts().pageLoadTimeout(TimeUtils.timewait, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 			//driver.get(prop.getProperty("URL"));
 			driver.get(url);
 

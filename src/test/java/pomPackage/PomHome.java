@@ -1,8 +1,10 @@
 package pomPackage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,6 +12,7 @@ import base.Base;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -30,7 +33,7 @@ public class PomHome extends Base {
 	@FindBy(xpath = "//*[@id=\"reviewsRefinements\"]/ul/span/li")
 	WebElement ratingFilterClearButton;
 
-	@FindBy(xpath = "//*[@id=\"s-result-sort-select\"]")
+	@FindBy(xpath = "/html/body/div[1]/div[1]/span[2]/div/h1/div/div[4]/div/div/form/span/select")
 	WebElement sortBySelector;
 
 
@@ -49,6 +52,9 @@ public class PomHome extends Base {
 		searchButton.click();
 	}
 
+	/*
+	Tests whether "Results" text is visible on the product search results page.
+	 */
 	public boolean isResultsPageDisplayed()
 	{
 		try{
@@ -64,10 +70,13 @@ public class PomHome extends Base {
 		fourStarFilter.click();
 	}
 
+	/*
+	Tests the filter by checking if "clear filter" button is visible after filter is applied.
+	 */
 	public boolean isRatingFilterApplied(){
 		try{
-			WebElement clearButton = driver.findElement(By.xpath("//*[@id=\"reviewsRefinements\"]/ul/span/li"));
-			System.out.println(clearButton);
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+			WebElement clearButton = driver.findElement(By.xpath("//*[@id=\"reviewsRefinements\"]/ul/span/li/span/a/span[2]"));
 			return true;
 		}
 		catch (NoSuchElementException e){
@@ -75,6 +84,9 @@ public class PomHome extends Base {
 		}
 	}
 
+	/*
+	Tests whether searched string is visible on the results page
+	 */
 	public boolean isSearchedStringVisibleOnResultsPage(){
 	try{
 		driver.findElement(By.xpath(searchedStringXpath));
@@ -84,11 +96,23 @@ public class PomHome extends Base {
 	}
 	}
 
+	/*
+	selects Price low to high filter
+	 */
 	public void selectLowToHighPriceSort(){
-		Select selector = new Select(sortBySelector);
-		WebElement element=new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"s-result-sort-select\"]/option[2]")));
+		WebElement element = driver.findElement(By.xpath("//*[@id=\"s-result-sort-select\"]"));
+		Actions action = new Actions(driver);
+		action.moveToElement(element).click().perform();
+		Select dropdown = new Select(element);
+		dropdown.selectByIndex(1);}
 
-		selector.selectByVisibleText("Price: Low to high");
+	/*
+	checks if the sorting has been applied by the checking the page URL
+	Url contains "ref=sr_st_price-asc-rank" if sorted by price ascending
+	 */
+	@Test
+	public boolean IsResultSortedLowToHighPriceCheckByURL(){
+		return driver.getCurrentUrl().contains("ref=sr_st_price-asc-rank");
 	}
 
 
