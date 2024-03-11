@@ -31,7 +31,7 @@ public class SearchTest extends Base {
 		home.performSearch();
 		//Results page should be displayed
 		Assert.assertTrue(home.isResultsPageDisplayed()); //true
-		Assert.assertTrue(home.isSearchedStringVisibleOnResultsPage());
+		Assert.assertTrue(home.isSearchedStringVisibleOnResultsPage("laptop"));
 	}
 
 	@Test
@@ -42,7 +42,6 @@ public class SearchTest extends Base {
 		Assert.assertFalse(home.isRatingFilterApplied());
 		home.applyRatingFilter();
 		Assert.assertTrue(home.isRatingFilterApplied());
-		Assert.assertTrue(home.IsResultSortedLowToHighPriceCheckByURL());
 	}
 
 	@Test
@@ -51,6 +50,16 @@ public class SearchTest extends Base {
 		home.search(searchKeyWord);
 		home.performSearch();
 		home.selectLowToHighPriceSort();
+		Assert.assertTrue(home.IsResultSortedLowToHighPriceCheckByURL());
+
+	}
+	@Test
+	public void New() {
+	//	home.isNextButtonVisible();
+		String searchKeyWord = "laptop";
+		home.search(searchKeyWord);
+		home.performSearch();
+		System.out.println(home.isNextButtonVisible()?"true":"false");
 	}
 
 	/*
@@ -64,11 +73,30 @@ public class SearchTest extends Base {
 		String searchKeyWord = "laptop";
 		home.search(searchKeyWord);
 		home.performSearch();
+		Assert.assertTrue(home.isResultsPageDisplayed()); //true
+		Assert.assertTrue(home.isSearchedStringVisibleOnResultsPage(searchKeyWord));
 		Assert.assertFalse(home.isRatingFilterApplied());
 		home.applyRatingFilter();
 		Assert.assertTrue(home.isRatingFilterApplied());
 		home.selectLowToHighPriceSort();
+		Assert.assertTrue(home.IsResultSortedLowToHighPriceCheckByURL());
+		home.IsNavigatedToNextPage();
+	
+
+		
 	}
+	
+	@Test
+	public void NavigateToNextPage() {
+		String searchKeyWord = "laptop";
+		home.search(searchKeyWord);
+		home.performSearch();
+		home.IsNavigatedToNextPage();
+	}
+	
+	
+	
+	
 
 //	@AfterMethod
 //	public void closeBrowser(){

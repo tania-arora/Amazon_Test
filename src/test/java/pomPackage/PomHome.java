@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import base.Base;
+import net.bytebuddy.asm.Advice.Return;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -35,6 +37,9 @@ public class PomHome extends Base {
 
 	@FindBy(xpath = "/html/body/div[1]/div[1]/span[2]/div/h1/div/div[4]/div/div/form/span/select")
 	WebElement sortBySelector;
+	
+	@FindBy(xpath = "/html/body/div[1]/div[1]/div[1]/div[1]/div/span[1]/div[1]/div[66]/div/div/span/a[3]")
+	WebElement nextButton;
 
 
 	String resultsXpath = "//*[@id=\"search\"]/div[1]/div[1]/div/span[1]/div[1]/div[2]/div/span/div/div/span";
@@ -87,10 +92,10 @@ public class PomHome extends Base {
 	/*
 	Tests whether searched string is visible on the results page
 	 */
-	public boolean isSearchedStringVisibleOnResultsPage(){
+	public boolean isSearchedStringVisibleOnResultsPage(String text){
 	try{
-		driver.findElement(By.xpath(searchedStringXpath));
-		return true;
+		WebElement searchText = driver.findElement(By.xpath(searchedStringXpath));
+		return searchText.getText().equalsIgnoreCase(text);
 	}catch(NoSuchElementException e){
 		return false;
 	}
@@ -101,18 +106,34 @@ public class PomHome extends Base {
 	 */
 	public void selectLowToHighPriceSort(){
 		WebElement element = driver.findElement(By.xpath("//*[@id=\"s-result-sort-select\"]"));
-		Actions action = new Actions(driver);
-		action.moveToElement(element).click().perform();
 		Select dropdown = new Select(element);
-		dropdown.selectByIndex(1);}
+		dropdown.selectByVisibleText("Price: Low to high");}
 
 	/*
 	checks if the sorting has been applied by the checking the page URL
 	Url contains "ref=sr_st_price-asc-rank" if sorted by price ascending
 	 */
-	@Test
+	
 	public boolean IsResultSortedLowToHighPriceCheckByURL(){
 		return driver.getCurrentUrl().contains("ref=sr_st_price-asc-rank");
+	}
+	
+	public void IsNavigatedToNextPage()
+	{
+		driver.findElement(By.xpath("//a[contains(.,'Next')]")).click();
+//		nextButton.click();
+	}
+	
+	public boolean isNextButtonVisible() {
+		try{
+			driver.findElement(By.xpath("//a[contains(.,'Next')]")).click();
+				
+			return true;
+		}
+		catch (NoSuchElementException e) {
+			return false;
+			// TODO: handle exception
+		}
 	}
 
 

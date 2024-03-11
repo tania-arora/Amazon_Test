@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testPackage.Signin_test">
+      <class name="testPackage.SearchTest">
         <methods>
-          <include name="testSigninInvalidCredentials"/>
-          <include name="initsetup_signin"/>
-          <include name="testSignInValidCredentials"/>
+          <include name="searchFilterSortTest"/>
+          <include name="initsetup"/>
         </methods>
-      </class> <!-- testPackage.Signin_test -->
+      </class> <!-- testPackage.SearchTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

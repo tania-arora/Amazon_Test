@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [testPackage.SearchTest]" verbose="0">
-  <test thread-count="5" name="Command line test(failed)" verbose="0">
+<suite name="Failed suite [Surefire suite]" verbose="0">
+  <test thread-count="5" name="Surefire test(failed)" verbose="0">
     <classes>
       <class name="testPackage.SearchTest">
         <methods>
-          <include name="closeBrowser"/>
+          <include name="NavigateToNextPage"/>
           <include name="search"/>
+          <include name="searchFilterSortTest"/>
           <include name="sortByPriceAscending"/>
           <include name="applyFilter"/>
           <include name="initsetup"/>
         </methods>
       </class> <!-- testPackage.SearchTest -->
     </classes>
-  </test> <!-- Command line test(failed) -->
-</suite> <!-- Failed suite [testPackage.SearchTest] -->
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->
