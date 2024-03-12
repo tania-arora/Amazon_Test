@@ -1,0 +1,10 @@
+<suite name="TestNg Amazon">
+	<test name="Regression" allow-return-values="true">
+		<classes>
+		<class name="testPackage.Signup_test" />
+		<class name="testPackage.Signin_test" />
+			<class name="testPackage.SearchTest" />
+		</classes>
+	</test>
+	
+</suite>
