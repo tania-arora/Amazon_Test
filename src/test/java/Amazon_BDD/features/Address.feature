@@ -23,7 +23,7 @@ Feature: Amazon Address page
     Given User must be logged in
     And address page should be open
     When User cicks on add address
-    And fills all the information
+    And fills all the information except State
     And clicks on add address
-    Then New address should be saved
+    Then Error message should be displayed
    

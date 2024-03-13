@@ -12,6 +12,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
@@ -34,7 +35,7 @@ public static Properties search_prop=new Properties();
 
 			try {
 				
-				FileInputStream file = new FileInputStream("C:\\Users\\vikra\\OneDrive\\Desktop\\Tania\\Java workspace\\AmazonFinalProject\\src\\test\\java\\environmentvariables\\config.properties");
+				FileInputStream file = new FileInputStream("E:\\Amazon_Test\\src\\test\\java\\environmentvariables\\config.properties");
 				search_prop.load(file);
 			
 			}
@@ -47,6 +48,7 @@ public static Properties search_prop=new Properties();
 			}
 			driver = new ChromeDriver();
 			driver.get(search_prop.getProperty("URL_HOME"));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		}
 
 		@When("User searches for a product")

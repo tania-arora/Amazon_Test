@@ -21,8 +21,8 @@ Feature: Shopping cart update
 
 Scenario: Updating the quantity
     Given Shopping cart should be opened
-    And one product is alreay present in the cart
-    When User updates the quantity of the product
-    Then Price should be updated
+    And one product is already present in the cart
+    When User deletes the product from the cart
+    Then Price should be updated to zero
 
  

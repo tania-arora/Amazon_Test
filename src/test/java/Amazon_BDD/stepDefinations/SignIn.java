@@ -3,6 +3,7 @@ package Amazon_BDD.stepDefinations;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -23,7 +24,7 @@ public class SignIn {
 public void sign_in_page_should_be_open() {
 	try {
 		
-		FileInputStream file = new FileInputStream("C:\\Users\\vikra\\OneDrive\\Desktop\\Tania\\Java workspace\\AmazonFinalProject\\src\\test\\java\\environmentvariables\\config.properties");
+		FileInputStream file = new FileInputStream("E:\\Amazon_Test\\src\\test\\java\\environmentvariables\\config.properties");
 		prop_bdd.load(file);
 	
 	}
@@ -36,6 +37,7 @@ public void sign_in_page_should_be_open() {
 	}
 	driver = new ChromeDriver();    	
     driver.get(prop_bdd.getProperty("URL_Signin"));
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 }
 
 @When("User enters valid email address")
